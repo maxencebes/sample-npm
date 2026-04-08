@@ -25,6 +25,9 @@ jobs:
       JF_URL: https://psazuse.jfrog.io
       JF_PROJECT: maxence
     steps:
+      - name: Checkout the repository
+        uses: actions/checkout@v4
+        
       - name: Setup JFrog CLI
         id: setup-cli
         uses: jfrog/setup-jfrog-cli@v4
