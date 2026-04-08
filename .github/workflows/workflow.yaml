@@ -41,5 +41,5 @@ jobs:
 
       - name: NPM install
         run: |
-          jf npmc --repo-resolve ${{ inputs.environment }}
+          jf npmc --repo-resolve ${{ inputs.repo }}
           jf npm install
