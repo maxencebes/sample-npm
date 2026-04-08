@@ -1,0 +1,28 @@
+{
+  "name": "sample-artifactory-app",
+  "version": "1.1.0",
+  "description": "A sample Node.js application demonstrating popular dependencies for Artifactory deployment.",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "npm",
+    "artifactory",
+    "sample",
+    "nodejs",
+    "dependencies"
+  ],
+  "author": "Gemini AI",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^1.6.8",
+    "express": "^4.19.2",
+    "lodash": "^4.17.21",
+    "ejs": "^3.1.10"
+  },
+  "publishConfig": {
+    "registry": "https://psazuse.jfrog.io/artifactory/api/npm/maxence-npm-dev-local/"
+  }
+}

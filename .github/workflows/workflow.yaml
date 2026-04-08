@@ -1,0 +1,45 @@
+name: sample-npm
+
+env:
+  JFROG_CLI_BUILD_PROJECT: maxence
+
+on:
+  workflow_dispatch:
+    inputs:
+      repo:
+        description: 'Remote repository to resolve dependencies'
+        required: true
+        default: 'staging'
+        type: choice
+        options:
+          - maxence-npm-remote
+          - maxence-npm-dev-remote
+
+permissions:
+  id-token: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    env:
+      JF_URL: https://psazuse.jfrog.io
+      JF_PROJECT: maxence
+    steps:
+      - name: Setup JFrog CLI
+        id: setup-cli
+        uses: jfrog/setup-jfrog-cli@v4
+        env:
+          JF_URL: https://psazuse.jfrog.io
+          JF_PROJECT: maxence
+        with:
+          oidc-provider-name: github-maxenceb
+
+      - name: Install Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+
+      - name: NPM install
+        run: |
+          jf npmc --repo-resolve ${{ inputs.environment }}
+          jf npm install
